@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TodoComponent } from './todo.component';
 
-// import { AuthGuardService } from '../core/auth-guard.service'; // disable login
+import { AuthGuardService } from '../core/auth-guard.service'; // enable login
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'todo/:filter',
-    // canActivate: [AuthGuardService], // disable login
+    canActivate: [AuthGuardService], // enable login
     component: TodoComponent
   }
 ];

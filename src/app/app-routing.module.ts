@@ -5,8 +5,8 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {
     path: '',
-    // redirectTo: 'login',// disable login
-    redirectTo: 'todo',
+    // redirectTo: 'todo',
+    redirectTo: 'login', // enable login
     pathMatch: 'full'
   },
   {
