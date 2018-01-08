@@ -1,6 +1,6 @@
 <div class="view">
   <!-- <input class="toggle" type="checkbox" (click)="toggle()" [checked]="isChecked"> -->
-  <mdl-icon-toggle class="toggle-all" [mdl-ripple]="true" (click)="onToggleAllTriggered()">expand_more</mdl-icon-toggle>
+    <mdl-icon-toggle (click)="toggle()" [(ngModel)]="isChecked">check_circle</mdl-icon-toggle>
   <label [class.labelcompleted]="isChecked" (click)="toggle()">{{todoDesc}}</label>
   <button class="destroy" (click)="remove(); $event.stopPropagation()"></button>
 </div>
