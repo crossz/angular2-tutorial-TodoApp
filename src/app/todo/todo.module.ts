@@ -12,11 +12,14 @@ import { TodoService } from './todo.service';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 
+import { MdlModule } from '@angular-mdl/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     HttpModule,
+    MdlModule,
     TodoRoutingModule
   ],
   declarations: [

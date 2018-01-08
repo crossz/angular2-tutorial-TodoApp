@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-mdl/core": "latest",
     "@angular/common": "^4.4.0",
     "@angular/compiler": "^4.4.0",
     "@angular/core": "^4.4.0",
