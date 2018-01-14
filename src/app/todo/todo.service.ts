@@ -30,14 +30,15 @@ export class TodoService {
   // POST /todos
   addTodo(desc:string){
     let todoToAdd = {
-      //id: UUID.UUID(),
+      id: UUID.UUID(),
       desc: desc,
       completed: false,
-      // userId: this.userId
+      userId: this.userId
     };
     this.http
       .post(this.api_url, JSON.stringify(todoToAdd), {headers: this.headers})
       .map(res => res.json() as Todo)
+      ._do(test=>{console.log(test)})
       .subscribe(todo => {
         this.dataStore.todos = [...this.dataStore.todos, todo];
         this._todos.next(Object.assign({}, this.dataStore).todos);
