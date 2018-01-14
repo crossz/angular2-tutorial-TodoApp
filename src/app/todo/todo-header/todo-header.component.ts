@@ -19,6 +19,10 @@ export class TodoHeaderComponent {
   //detect the enter keyup event and output this to parent
   @Output() onEnterUp = new EventEmitter<string>();
 
+
+  // constructor() {
+  // }
+
   constructor(private elementRef: ElementRef) {
     const event$ = Observable.fromEvent(elementRef.nativeElement, 'input')
       .map(() => this.inputValue)
@@ -27,6 +31,8 @@ export class TodoHeaderComponent {
       .distinctUntilChanged();
     event$.subscribe(input => this.textChanges.emit(input));
   }
+
+
   enterUp(){
     if(this.inputValue.trim().length===0) return;
     this.onEnterUp.emit(this.inputValue);

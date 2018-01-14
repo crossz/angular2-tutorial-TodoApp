@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
+  private desc: String;
 
   todos : Observable<Todo[]>;
 
@@ -26,6 +27,12 @@ export class TodoComponent implements OnInit {
         this.todos = this.service.todos;
       })
   }
+
+  onTextChanges(value) {
+    this.desc = value;
+    console.log(value);
+  }
+
   addTodo(desc: string) {
     this.service.addTodo(desc);
   }
