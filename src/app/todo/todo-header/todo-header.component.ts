@@ -15,7 +15,7 @@ export class TodoHeaderComponent {
   @Input() delay: number = 300;
 
   //detect the input value and output this to parent
-  @Output() textChanges = new EventEmitter<string>();
+  @Output() onTextChanges = new EventEmitter<string>();
   //detect the enter keyup event and output this to parent
   @Output() onEnterUp = new EventEmitter<string>();
 
@@ -29,7 +29,7 @@ export class TodoHeaderComponent {
       .filter(input=> input.trim().length>0)
       .debounceTime(this.delay)
       .distinctUntilChanged();
-    event$.subscribe(input => this.textChanges.emit(input));
+    event$.subscribe(input => this.onTextChanges.emit(input));
   }
 
 

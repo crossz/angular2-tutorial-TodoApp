@@ -28,7 +28,7 @@ export class TodoComponent implements OnInit {
       })
   }
 
-  onTextChanges(value) {
+  textChanges(value) {
     this.desc = value;
     console.log(value);
   }

@@ -1,12 +1,12 @@
 <div>
   <app-todo-header
     placeholder="What do you want"
-    (textChanges)="onTextChanges($event)"
+    (onTextChanges)="textChanges($event)"
     (onEnterUp)="addTodo($event)" >
   </app-todo-header>
 
   {{desc}}
-  
+
   <app-todo-list
     [todos]="todos | async"
     (onToggleAll)="toggleAll()"
