@@ -19,18 +19,21 @@ export class TodoHeaderComponent {
   //detect the enter keyup event and output this to parent
   @Output() onEnterUp = new EventEmitter<string>();
 
-
-  // constructor() {
-  // }
-
-  constructor(private elementRef: ElementRef) {
-    const event$ = Observable.fromEvent(elementRef.nativeElement, 'input')
-      .map(() => this.inputValue)
-      .filter(input=> input.trim().length>0)
-      .debounceTime(this.delay)
-      .distinctUntilChanged();
-    event$.subscribe(input => this.onTextChanges.emit(input));
+  constructor(
+  ) {
+    // const a$ = Observable.from([1,2,3,7,7])
+    // .distinctUntilChanged();
+    // a$.subscribe((val)=>{console.log(val)})
   }
+
+  // constructor(private elementRef: ElementRef) {
+  //   const event$ = Observable.fromEvent(elementRef.nativeElement, 'input')
+  //     .map(() => this.inputValue)
+  //     .filter(input=> input.trim().length>0)
+  //     .debounceTime(this.delay)
+  //     .distinctUntilChanged();
+  //   event$.subscribe(input => this.onTextChanges.emit(input));
+  // }
 
 
   enterUp(){

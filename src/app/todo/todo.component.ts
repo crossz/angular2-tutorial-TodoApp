@@ -3,7 +3,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { TodoService } from './todo.service';
 import { Todo } from '../domain/entities';
 
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   templateUrl: './todo.component.html',
@@ -17,15 +18,42 @@ export class TodoComponent implements OnInit {
   constructor(
     @Inject('todoService') private service,
     private route: ActivatedRoute,
-    private router: Router) {}
+    private router: Router) {
+
+
+
+      console.log(this.route.params)
+
+      console.log(this.route.snapshot.paramMap.get('filter'));
+      this.route.paramMap.subscribe(
+        params => {
+          this.desc = params.get('filter');
+          console.log(this.desc);
+        }
+      );
+
+      
+
+      this.service.filterTodos(this.desc);
+      this.todos = this.service.todos;
+  
+
+
+      Observable.from(this.route.params)
+      // this.route.params
+      // ._do( val => console.log(val))
+        // .pluck('filter')
+        // .subscribe(filter => {
+        //   this.service.filterTodos(filter);
+        //   this.todos = this.service.todos;
+        // })
+  
+
+
+    }
 
   ngOnInit() {
-    this.route.params
-      .pluck('filter')
-      .subscribe(filter => {
-        this.service.filterTodos(filter);
-        this.todos = this.service.todos;
-      })
+
   }
 
   textChanges(value) {
