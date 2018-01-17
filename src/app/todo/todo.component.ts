@@ -1,10 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { TodoService } from './todo.service';
-import { Todo } from '../domain/entities';
+
 
 // import { Observable } from 'rxjs/Observable';
 import { Observable } from 'rxjs/Rx';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   templateUrl: './todo.component.html',
@@ -13,19 +14,21 @@ import { Observable } from 'rxjs/Rx';
 export class TodoComponent implements OnInit {
   private desc: String;
 
-  todos : Observable<Todo[]>;
+  
+
 
   constructor(
     @Inject('todoService') private service,
     private route: ActivatedRoute,
     private router: Router) {
-
+      this.desc = 'hello world.';
 
 
       console.log(this.route.params)
-
-      console.log(this.route.snapshot.paramMap.get('filter'));
-      this.route.paramMap.subscribe(
+      // get param method 1
+      console.log(this.route.snapshot.paramMap.get('filter')); 
+      // get param method 2
+      this.route.paramMap.subscribe(  
         params => {
           this.desc = params.get('filter');
           console.log(this.desc);
@@ -35,18 +38,18 @@ export class TodoComponent implements OnInit {
       
 
       this.service.filterTodos(this.desc);
-      this.todos = this.service.todos;
+
   
 
 
-      Observable.from(this.route.params)
-      // this.route.params
-      // ._do( val => console.log(val))
-        // .pluck('filter')
-        // .subscribe(filter => {
-        //   this.service.filterTodos(filter);
-        //   this.todos = this.service.todos;
-        // })
+      // Observable.from(this.route.params)
+      this.route.params
+      ._do( val => console.log(val))
+        .pluck('filter')
+        .subscribe(filter => {
+          this.service.filterTodos(filter);
+          console.log(this.service.todos);
+        })
   
 
 
@@ -61,19 +64,5 @@ export class TodoComponent implements OnInit {
     console.log(value);
   }
 
-  addTodo(desc: string) {
-    this.service.addTodo(desc);
-  }
-  toggleTodo(todo: Todo) {
-    this.service.toggleTodo(todo);
-  }
-  removeTodo(todo: Todo) {
-    this.service.deleteTodo(todo);
-  } 
-  toggleAll(){
-    this.service.toggleAll();
-  }
-  clearCompleted(){
-    this.service.clearCompleted();
-  }
+
 }
