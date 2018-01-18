@@ -4,6 +4,8 @@ import { UUID } from 'angular2-uuid';
 
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 import { Todo } from '../domain/entities';
 
@@ -78,7 +80,7 @@ export class TodoService {
   getTodos(){
     this.http.get(this.api_url)
       .map(res => res.json() as Todo[])
-      .do(t => console.log(t))
+      ._do(t => console.log(t))
       .subscribe(todos => this.updateStoreAndSubject(todos));
   }
   // GET /todos?completed=true/false
