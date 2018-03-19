@@ -9,7 +9,21 @@ import {
 } from '../actions/todo.action'
 import { AppState, Todo, Auth } from '../domain/state';
 
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/combineLatest';
+// import {combineLatest} from 'rxjs/observable/combineLatest';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/do';
+
+
+
+
+import { ChangeDetectorRef } from '@angular/core';
+
+
 
 @Component({
   templateUrl: './todo.component.html',
@@ -20,10 +34,10 @@ export class TodoComponent {
   todos : Observable<Todo[]>;
 
   constructor(
+    private cdr: ChangeDetectorRef,
     @Inject('todoService') private service,
-    // private service: TodoService,
-    private route: ActivatedRoute,
-    private store$: Store<AppState>) {
+    private store$: Store<AppState>, 
+    private route: ActivatedRoute) {
       const fetchData$ = this.service.getTodos()
         .flatMap(todos => {
           this.store$.dispatch({type: FETCH_FROM_API, payload: todos});
@@ -43,6 +57,13 @@ export class TodoComponent {
       )
     }
     
+
+  ngAfterViewInit() {
+    // this.message = 'all done loading :)'
+    this.cdr.detectChanges();
+  }
+
+
   addTodo(desc: string) {
     this.service.addTodo(desc);
   }

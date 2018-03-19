@@ -14,13 +14,24 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 
 import { MdlModule } from '@angular-mdl/core';
 
+
+import { StoreModule } from '@ngrx/store';
+import { todoReducer, todoFilterReducer } from '../reducers/todo.reducer';
+
+
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     HttpModule,
     MdlModule,
-    TodoRoutingModule
+    TodoRoutingModule,
+    StoreModule.forRoot({ 
+      todos: todoReducer, 
+      todoFilter: todoFilterReducer
+    })
   ],
   declarations: [
     TodoComponent,

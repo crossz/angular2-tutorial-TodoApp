@@ -3,6 +3,13 @@ import { Http, Headers } from '@angular/http';
 import { UUID } from 'angular2-uuid';
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/mergeMap';
+// import 'rxjs/add/operator/startWith';
+// import 'rxjs/add/operator/pluck';
+// import 'rxjs/add/operator/do';
+
+
 import { Store } from '@ngrx/store';
 // import { Todo } from '../domain/entities';
 import { AppState, Todo, Auth } from '../domain/state';
