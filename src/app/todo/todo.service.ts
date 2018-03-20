@@ -78,7 +78,7 @@ export class TodoService {
   }
   // GET /todos
   getTodos(): Observable<Todo[]> {
-    return this.http.get(`${this.api_url}?userId=${this.userId}`)
+    return this.http.get(`${this.api_url}`)
       .map(res => res.json() as Todo[]);
   }
   
