@@ -8,13 +8,18 @@ import { Todo } from '../../domain/entities';
 })
 export class TodoListComponent {
   _todos: Todo[] = [];
-  @Input()
-  set todos(todos:Todo[]){
-    this._todos = [...todos];
-  }
-  get todos() {
-    return this._todos;
-  }
+
+  // ## the simple way
+  @Input() todos : Todo[] = [...this._todos];
+  // ## the way for more logics
+  // @Input()
+  // set todos(todos:Todo[]){
+  //   this._todos = [...todos];
+  // }
+  // get todos() {
+  //   return this._todos;
+  // }
+
   @Output() onRemoveTodo = new EventEmitter<Todo>();
   @Output() onToggleTodo = new EventEmitter<Todo>();
   @Output() onToggleAll = new EventEmitter<boolean>();
