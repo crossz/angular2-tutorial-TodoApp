@@ -15,10 +15,12 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { MdlModule } from '@angular-mdl/core';
 
 
-import { StoreModule } from '@ngrx/store';
+// import { StoreModule } from '@ngrx/store';
+import { StoreModule, Store } from '@ngrx/store'
+
+
+
 import { todoReducer, todoFilterReducer } from '../reducers/todo.reducer';
-
-
 
 
 @NgModule({
