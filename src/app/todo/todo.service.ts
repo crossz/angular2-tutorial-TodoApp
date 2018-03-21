@@ -2,7 +2,9 @@ import { Injectable, Inject } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { UUID } from 'angular2-uuid';
 
-import { Observable } from 'rxjs/Observable';
+
+import {Observable} from 'rxjs/Rx';
+// import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
