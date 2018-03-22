@@ -9,9 +9,9 @@
 
   <app-todo-list
     [todos]="todos | async"
-    (onToggleAll)="toggleAll()"
-    (onRemoveTodo)="removeTodo($event)"
-    (onToggleTodo)="toggleTodo($event)"
+    (emitterOnToggleAll)="toggleAll()"
+    (emitterOnRemoveTodo)="removeTodo($event)"
+    (emitterOnToggleTodo)="toggleTodo($event)"
     >
   </app-todo-list>
   <app-todo-footer

@@ -8,13 +8,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class TodoItemComponent{
   @Input() isChecked: boolean = false;
   @Input() todoDesc: string = '';
-  @Output() onToggleTriggered = new EventEmitter<boolean>();
-  @Output() onRemoveTriggered = new EventEmitter<boolean>();
+  @Output() emitterOnToggleTriggered = new EventEmitter<boolean>();
+  @Output() emitterOnRemoveTriggered = new EventEmitter<boolean>();
 
   toggle() {
-    this.onToggleTriggered.emit(true);
+    this.emitterOnToggleTriggered.emit(true);
   }
   remove() {
-    this.onRemoveTriggered.emit(true);
+    this.emitterOnRemoveTriggered.emit(true);
   }
 }
