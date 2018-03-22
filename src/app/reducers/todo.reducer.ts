@@ -14,8 +14,10 @@ import {
 import { CustomAction } from '../actions/todo.customaction';
 
 
-
-export const todoReducer = (state: Todo[] =[], action: CustomAction) => {
+// ## for angular v5:
+// export const todoReducer = (state: Todo[] =[], action: CustomAction) => {
+// ## for angular v4:
+  export function todoReducer (state: Todo[] =[], action: CustomAction) {
   switch (action.type) {
     case ADD_TODO:
       return [
@@ -46,7 +48,10 @@ export const todoReducer = (state: Todo[] =[], action: CustomAction) => {
   }
 }
 
-export const todoFilterReducer = (state = (todo: Todo) => todo, action: CustomAction) => {
+// ## for angular v5:
+// export const todoFilterReducer = (state = (todo: Todo) => todo, action: CustomAction) => {
+// ## for angular v4:
+  export function todoFilterReducer (state = (todo: Todo) => todo, action: CustomAction) {
   switch (action.type) {
     case VisibilityFilters.SHOW_ALL:
       return todo => todo;
